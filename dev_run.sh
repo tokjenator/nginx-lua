@@ -10,6 +10,7 @@ exec docker run -it \
     -v $CACHE_DIR:/app/esben_nginx/var/cache \
     -v "$(pwd)/install_template/conf/lualib":/opt/openresty/lualib \
     -v "$(pwd)/install_template/conf":/opt/openresty/nginx/conf \
+    -v "$(pwd)/install_template/data":/www/data \
     -p 8999:80 \
     ficusio/openresty:debian "$@"
 
