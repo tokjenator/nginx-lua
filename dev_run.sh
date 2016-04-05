@@ -6,11 +6,12 @@ LOG_DIR=/tmp/nginx-log
 exec docker run -it \
     --rm \
     --name my-app-dev \
-    -v $LOG_DIR:/app/nginx/log/ \
-    -v $CACHE_DIR:/app/esben_nginx/var/cache \
-    -v "$(pwd)/install_template/conf/lualib":/opt/openresty/lualib \
-    -v "$(pwd)/install_template/conf":/opt/openresty/nginx/conf \
-    -v "$(pwd)/install_template/data":/www/data \
+    -v $LOG_DIR:/var/nginx/log \
+    -v $CACHE_DIR:/var/nginx/cache \
+    -v "$(pwd)/nginx/lualib":/opt/openresty/nginx/lualib \
+    -v "$(pwd)/nginx/conf":/opt/openresty/nginx/conf \
+    -v "$(pwd)/nginx/data":/www/data \
     -p 8999:80 \
-    ficusio/openresty:debian "$@"
+    openresty-magick:latest
 
+#    ficusio/openresty:debian "$@"
